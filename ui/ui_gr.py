@@ -35,8 +35,9 @@ def main_gr_block():
         output = gr.Gallery(
             label="Generated images",
             show_label=False,
-            elem_id="gallery"
-        ).style(columns=(1, 2, 3, 4), object_fit="contain", height="auto")
+            elem_id="gallery",
+            columns=[4], rows=[1], object_fit="contain", height="auto"
+        )
 
         greet_btn.click(
             fn=gen_image_from_prompt,
