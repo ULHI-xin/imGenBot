@@ -18,7 +18,7 @@ dockerflag = os.environ.get("dockerrun") == "yes"
 
 if __name__ == "__main__":
     if not os.environ.get("OPENAI_API_KEY"):
-        logging.error("Please give a api key!")
+        logging.error("Please provide an api key!")
         sys.exit(1)
 
     openai.api_key = os.environ.get("OPENAI_API_KEY")
@@ -37,11 +37,13 @@ if __name__ == "__main__":
             server_name="0.0.0.0",
             server_port=_port,
             share=False,
-            favicon_path="./assets/favicon.ico"
+            favicon_path="./web_assets/favicon.ico",
+            inbrowser=False,
         )
     else:
         gr_block.queue(concurrency_count=1).launch(
             server_name="0.0.0.0",
             server_port=_port,
-            share=False
+            share=False,
+            favicon_path="./web_assets/favicon.ico"
         )
